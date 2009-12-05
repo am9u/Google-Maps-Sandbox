@@ -22,26 +22,29 @@
 <script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAvYOlX04AjguN5yhxddqxJhQ09Fm2IUkCniqCvsZpPhyZNv5wbRSjvoCkrhQVuLYVkywka3u8XUjSng&sensor=false"></script>
 
 <script type="text/javascript">
+// not wrapped in a closure for now so we can watch vars in console
+// TODO: explore geocoder caching!
 // (function(){
 
 var map,
     geocoder,
     home = { address: '155 East 49th Street, New York, NY 10017' };
 
-// init map and geocoder; center map on palo alto (from gmaps API doc)
+// init map and geocoder; center map on home
 function initializeMap() {
 	map = new GMap2(document.getElementById("map"));
     map.setCenter( home.latLng, 15);
     map.setUIToDefault();
 }
 
+// create a marker for home and add it to the pa
 function createHomeMarker(){
     home.marker = new GMarker( home.latLng );
     map.addOverlay( home.marker );
 }
 
 function init(){
-    // find latLng for home address and init map with that as center point
+    // find latLng for home address using Geocoder and init map with that as center point
 	if (GBrowserIsCompatible()) {
 		geocoder = new GClientGeocoder();
         geocoder.getLatLng( home.address,
