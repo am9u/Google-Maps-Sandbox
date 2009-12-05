@@ -1,3 +1,7 @@
+<?php
+    include("settings.php");
+?>
+
 <!DOCCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
@@ -13,13 +17,8 @@
 
 <body onunload="GUnload()">
 
-<!--
-	API key: ABQIAAAAvYOlX04AjguN5yhxddqxJhQpshiSpNGIWNixjG34yEtU6UEb7hQOwXCPyhtyFr_aP7BmisoYj5nf1A
-    API key (ferrinho): ABQIAAAAvYOlX04AjguN5yhxddqxJhQ09Fm2IUkCniqCvsZpPhyZNv5wbRSjvoCkrhQVuLYVkywka3u8XUjSng
--->
-
 <script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
-<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAvYOlX04AjguN5yhxddqxJhQpshiSpNGIWNixjG34yEtU6UEb7hQOwXCPyhtyFr_aP7BmisoYj5nf1A&sensor=false"></script>
+<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<?php echo $googleMapsAPIKey ?>&sensor=false"></script>
 
 <script type="text/javascript">
 // not wrapped in a closure for now so we can watch vars in console
