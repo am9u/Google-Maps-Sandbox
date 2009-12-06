@@ -48,7 +48,7 @@
 
 var map,
     geocoder,
-    home = { address: '155 East 49th Street, New York, NY 10017' };
+    home = { address: "<?php $homeAddress ?>" };
 
 // init map and geocoder; center map on home
 function initializeMap() {
@@ -66,14 +66,20 @@ function createHomeMarker(){
 function init(){
     // find latLng for home address using Geocoder and init map with that as center point
 	if (GBrowserIsCompatible()) {
+        // javascript google geocoder client
 		geocoder = new GClientGeocoder();
-        geocoder.getLatLng( home.address,
-            function createMap( latLng ) {
-                home.latLng = latLng;    
-                initializeMap();
-                createHomeMarker();
-            }
-        );
+        // geocoder.getLatLng( home.address,
+        //     function createMap( latLng ) {
+        //         home.latLng = latLng;    
+        //         initializeMap();
+        //         createHomeMarker();
+        //     }
+        // );
+
+        // set home latLng
+        home.latLng = new GLatLng( <?php echo $coordinates[1] ?>, <?php echo $coordinates[0] ?> );
+        initializeMap();
+        createHomeMarker();    
     }
 }
 
