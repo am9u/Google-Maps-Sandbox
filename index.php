@@ -1,6 +1,27 @@
 <?php
-    include("settings.php");
+
+    $DOCROOT = $_SERVER["DOCUMENT_ROOT"];
+    require_once( "settings.php" );
+
+    require_once( $DOCROOT . "/shared/classes/php/DataFeeder.php" );
+    
+    $dataFeedSettings = array( 
+        "id" => "geocodeHome", 
+        "url" => $homeAddressGeocodeUrl,
+        "dataType" => "json",
+        "expires" => 120 // expires timeout in minutes
+    );
+    $df = new DataFeeder( $dataFeedSettings );
+    $homeJson = $df->load();
+    $home = json_decode( $homeJson );
+    $placemark = $home->Placemark[0];
+    $coordinates = $placemark->Point->coordinates;
+
 ?>
+<!--
+    <?php echo( "url: " . $homeAddressGeocodeUrl ); ?>
+    <?php echo( "coordinates:" . $coordinates[0] . " " . $coordinates[1] ); ?>
+-->
 
 <!DOCCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
