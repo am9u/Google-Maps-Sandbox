@@ -21,6 +21,9 @@
 <!--
     <?php echo( "url: " . $homeAddressGeocodeUrl ); ?>
     <?php echo( "coordinates:" . $coordinates[0] . " " . $coordinates[1] ); ?>
+
+    Yelp WS ID:
+    ywsid=UFdkS5c39cagoMswVr3zmA
 -->
 
 <!DOCCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
